@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <!--<link rel="stylesheet" href="http://img.thea.cn/public/platform/thea/201904/form/sass/index.scss">-->
+
+    <script src="jquery.min.js"></script>
+    <script src="thea.ms.form.js"></script>
+</head>
+<body>
+<form class="sign-in">
+    <div class="kc">
+        <p>请选择您要领取的课程：</p>
+        <label><input type="radio" name="kc" value="技术实务">技术实务</label>
+        <label><input type="radio" name="kc" value="综合能力">综合能力</label>
+        <label><input type="radio" name="kc" value="案例分析">案例分析</label>
+        <input type="hidden" class="user-con">
+    </div>
+    <label class="l-input">
+        <span>您的姓名：</span>
+        <input type="text" class="user-name" placeholder="必填">
+    </label>
+    <label class="l-input">
+        <span>手机号码：</span>
+        <input type="text" class="user-tel" maxlength="11" placeholder="必填">
+    </label>
+    <div class="link">
+        <a href="javascript:void(0)" onclick="ECHAT.customNewWinChat()">报考条件审核</a>
+        <input type="submit" value="立即开通试学账号">
+    </div>
+</form>
+
+<script type="text/javascript">
+    $('.kc label').click(function() {
+        // 点击的添加active其他兄弟去除active
+        $(this).addClass('active').siblings().removeClass('active');
+
+    });
+    $('.kc label input:radio').click(function(e) {
+        console.log(1111, e)
+        e.stopPropagation();
+        // 如果想要找兄弟元素，先找其父元素然后再找儿子
+        $(this).parents('.kc').find('.user-con').removeClass('error');
+        $(this).parents('.kc').find('.user-con').val($(this).val());
+    });
+</script>
+</body>
+</html>
